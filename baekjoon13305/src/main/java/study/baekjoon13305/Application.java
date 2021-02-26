@@ -15,7 +15,6 @@ public class Application {
     static int n;
     static long[] loads;
     static long[] cost;
-    static long total;
 
     public static void main(String[] args) throws IOException {
         n = Integer.parseInt(br.readLine());
