@@ -1,23 +1,12 @@
 package study.problem.kt
 
 class Solution {
-    fun solution(numbers: IntArray, target: Int): Int {
-        var answer = dfs(numbers, target)
-        return answer
-    }
+    fun solution(numbers: IntArray, target: Int): Int = dfs(numbers, target)
 
-    private fun dfs(numbers: IntArray, target: Int, index: Int = 0, sum: Int = 0): Int {
-        return if (index == numbers.size) {
-            isEqualTargetSum(target, sum)
-        } else {
-            dfs(numbers, target, index + 1, sum + numbers[index]) + dfs(
-                numbers,
-                target,
-                index + 1,
-                sum - numbers[index]
-            )
-        }
-    }
-
-    private fun isEqualTargetSum(target: Int, sum: Int): Int = if (target == sum) 1 else 0
+    private fun dfs(numbers: IntArray, target: Int): Int =
+        numbers.fold(listOf(0)) { list, number ->
+            list.run {
+                map { it + number } + map { it - number }
+            }
+        }.count { it == target }
 }
