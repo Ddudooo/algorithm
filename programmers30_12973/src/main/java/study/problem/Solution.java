@@ -1,31 +1,22 @@
 package study.problem;
 
+import java.util.Stack;
+
 public class Solution {
 
 	public int solution(String s) {
-		int index = isContainPair(s);
-		while (index != -1) {
-			s = removePair(s, index);
-			index = isContainPair(s);
-		}
-		return s.length() > 0 ? 0 : 1;
-	}
+		Stack<Character> input = new Stack<>();
 
-	private int isContainPair(String s) {
-		for (int i = 0; i < s.length() - 1; i++) {
-			char cur = s.charAt(i);
-			char next = s.charAt(i + 1);
-			if (cur == next) {
-				return i;
+		for (char c : s.toCharArray()) {
+			if (input.isEmpty()) {
+				input.add(c);
+			} else if (input.peek() == c) {
+				input.pop();
+			} else {
+				input.add(c);
 			}
 		}
-		return -1;
-	}
 
-	private String removePair(String s, int index) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(s, 0, index);
-		sb.append(s.substring(index + 2));
-		return sb.toString();
+		return input.size() > 0 ? 0 : 1;
 	}
 }
