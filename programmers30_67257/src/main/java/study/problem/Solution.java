@@ -50,7 +50,7 @@ public class Solution {
 			.collect(Collectors.toList());
 	}
 
-	private static long calculate(List<Long> numbers, List<Operator> operators,
+	private long calculate(List<Long> numbers, List<Operator> operators,
 		Operator[] operatorRank) {
 		for (Operator curOp : operatorRank) {
 			for (int i = 0; i < operators.size(); i++) {
