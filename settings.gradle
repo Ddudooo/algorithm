@@ -81,3 +81,6 @@ include 'programmers30_67257'
 include 'programmers30_60058'
 include 'programmers30_12953'
 
+include 'programmers'
+include 'programmers:level2'
+include 'programmers:level2:programmers_72412'
