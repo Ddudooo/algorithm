@@ -1,87 +1,86 @@
 package study.problem;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Solution {
 
+	static Map<String, List<Integer>> peopleScores = new HashMap<>();
+
 	public int[] solution(String[] info, String[] query) {
+		for (String person : info) {
+			setPersonScore(person);
+		}
+		for (Entry<String, List<Integer>> entry : peopleScores.entrySet()) {
+			List<Integer> scores = peopleScores.get(entry.getKey());
+			Collections.sort(scores);
+		}
+
 		int[] answer = new int[query.length];
-		List<Person> people = getInfo(info);
 		for (int i = 0; i < query.length; i++) {
-			String[] queries = getQuery(query[i]);
-			long count = people.stream()
-				.filter(person -> person.eqLanguage(queries[0]))
-				.filter(person -> person.eqTask(queries[1]))
-				.filter(person -> person.eqJunior(queries[2]))
-				.filter(person -> person.eqPizza(queries[3]))
-				.filter(person -> person.gteScore(queries[4]))
-				.count();
-			answer[i] = (int) count;
+			try {
+				answer[i] = getCountByQuery(query[i]);
+			} catch (Exception e) {
+				answer[i] = 0;
+			}
 		}
 		return answer;
 	}
 
-	private String[] getQuery(String s) {
-		return s.split(" and | ");
-	}
+	public void setPersonScore(String info) {
+		String[] infos = info.split(" ");
+		String[] languages = new String[]{infos[0], "-"};
+		String[] tasks = new String[]{infos[1], "-"};
+		String[] careers = new String[]{infos[2], "-"};
+		String[] soulFoods = new String[]{infos[3], "-"};
 
-	public List<Person> getInfo(String[] infoArray) {
-		return Arrays.stream(infoArray)
-			.map(infoStr -> {
-				String[] info = infoStr.split(" ");
-				return new Person(info);
-			})
-			.collect(Collectors.toList());
-	}
-}
+		int score = Integer.parseInt(infos[4]);
 
-class Person {
-
-	private final String language;
-	private final boolean backend;
-	private final boolean junior;
-	private final boolean pizza;
-	private final int score;
-
-	Person(String... info) {
-		this.language = info[0];
-		this.backend = "backend".equals(info[1]);
-		this.junior = "junior".equals(info[2]);
-		this.pizza = "pizza".equals(info[3]);
-		this.score = Integer.parseInt(info[4]);
-	}
-
-	public boolean eqLanguage(String query) {
-		return "-".equals(query.trim()) || language.equals(query.trim());
-	}
-
-	public boolean eqTask(String query) {
-		if ("-".equals(query.trim())) {
-			return true;
+		for (String lang : languages) {
+			for (String task : tasks) {
+				for (String career : careers) {
+					for (String food : soulFoods) {
+						String key = lang + task + career + food;
+						List<Integer> scores = peopleScores.getOrDefault(key, new ArrayList<>());
+						scores.add(score);
+						peopleScores.put(key, scores);
+					}
+				}
+			}
 		}
-		return "backend".equals(query.trim()) == backend;
 	}
 
-	public boolean eqJunior(String query) {
-		if ("-".equals(query.trim())) {
-			return true;
-		}
-		return "junior".equals(query.trim()) == junior;
+	public int getCountByQuery(String query) throws Exception {
+		String[] filters = query.split(" and | ");
+		String key = filters[0] + filters[1] + filters[2] + filters[3];
+		int gte = Integer.parseInt(filters[4]);
+
+		List<Integer> scores = peopleScores.get(key);
+
+		return gteScore(scores, gte);
 	}
 
-	public boolean eqPizza(String query) {
-		if ("-".equals(query.trim())) {
-			return true;
+	private int gteScore(List<Integer> scores, int gte) {
+		if (scores.get(scores.size() - 1) < gte) {
+			return 0;
 		}
-		return "pizza".equals(query.trim()) == pizza;
-	}
 
-	public boolean gteScore(String query) {
-		if ("-".equals(query.trim())) {
-			return true;
+		int mid = 0;
+		int end = scores.size();
+		int start = 0;
+
+		while (end > start) {
+			mid = (start + end) / 2;
+			if (scores.get(mid) >= gte) {
+				end = mid;
+			} else {
+				start = mid + 1;
+			}
 		}
-		return score >= Integer.parseInt(query.trim());
+		return scores.size() - start;
 	}
 }
