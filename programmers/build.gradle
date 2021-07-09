@@ -5,6 +5,7 @@ plugins {
 
 group 'study'
 version '1.0-SNAPSHOT'
+sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
@@ -21,6 +22,9 @@ test {
 }
 
 subprojects {
+
+    sourceCompatibility = '11'
+
     plugins.apply('org.jetbrains.kotlin.jvm')
 
     repositories {
