@@ -18,7 +18,8 @@ class SolutionTest {
 
 	@ParameterizedTest
 	@CsvSource(value = {
-		"6\t4\t[[1, 1, 1, 0], [1, 2, 2, 0], [1, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 3], [0, 0, 0, 3]]\t[4, 5]"
+		"6\t4\t[[1, 1, 1, 0], [1, 2, 2, 0], [1, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 3], [0, 0, 0, 3]]\t[4, 5]",
+		"6\t4\t[[1, 1, 1, 0], [1, 1, 1, 0], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1], [0, 0, 0, 1]]\t[2, 6]"
 	}, delimiter = '\t')
 	void testCase(int m, int n, String pictureStr, String answerStr) {
 		int[] answer = this.solution.solution(m, n, strToIntDoubleAry(pictureStr));
