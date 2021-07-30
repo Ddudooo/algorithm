@@ -23,7 +23,7 @@ class SolutionTest {
 	}, delimiter = '\t')
 	void testCase(String aryStr, String resultStr) {
 		int[] answer = this.solution.solution(strToIntDoubleAry(aryStr));
-
+		System.out.println("answer = " + answer[0] + " " + answer[1]);
 		assertArrayEquals(strToIntAry(resultStr), answer, "답이 같아야 한다.");
 	}
 
