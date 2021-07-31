@@ -17,8 +17,8 @@ class SolutionTest {
 
 	@ParameterizedTest
 	@CsvSource(value = {
-		"5\t2\n",
-		"6\t2\n",
+		"5\t2",
+		"6\t2",
 		"5000\t5"
 	}, delimiter = '\t')
 	void testCase(int n, int result) {
