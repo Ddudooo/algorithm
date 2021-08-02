@@ -17,7 +17,11 @@ class SolutionTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {}, delimiter = '\t')
+	@CsvSource(value = {
+		"4\t5\t[\"CCBDE\", \"AAADE\", \"AAABF\", \"CCBBF\"]\t14",
+		"6\t6\t[\"TTTANT\", \"RRFACC\", \"RRRFCC\", \"TRRRAA\", \"TTMMMF\", \"TMMTTJ\"]\t15",
+		"4\t5\t[\"AAAAA\",\"AUUUA\",\"AUUAA\",\"AAAAA\"]\t14"
+	}, delimiter = '\t')
 	void testCase(int m, int n, String boardStr, int result) {
 		int answer = this.solution.solution(m, n, strToStrAry(boardStr));
 
