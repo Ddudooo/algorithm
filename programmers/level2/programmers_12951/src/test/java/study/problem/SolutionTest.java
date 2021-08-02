@@ -18,7 +18,10 @@ class SolutionTest {
 	@ParameterizedTest
 	@CsvSource(value = {
 		"\"3people unFollowed me\"\t\"3people Unfollowed Me\"",
-		"\"for the last week\"\t\"For The Last Week\""
+		"\"for the last week\"\t\"For The Last Week\"",
+		"1\t1",
+		" a 2\t A 2",
+		" A  sdf fFt \t A  Sdf Fft "
 	}, delimiter = '\t')
 	void testCase(String s, String result) {
 		s = s.replaceAll("\"", "");
