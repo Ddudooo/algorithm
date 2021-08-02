@@ -81,6 +81,10 @@ include 'programmers30_60058'
 include 'programmers30_12953'
 
 include 'programmers'
+
+include 'programmers:weekly'
+include 'programmers:weekly:programmers_82612'
+
 include 'programmers:level2'
 include 'programmers:level2:programmers_1829'
 include 'programmers:level2:programmers_12978'
@@ -90,6 +94,7 @@ include 'programmers:level2:programmers_17680'
 include 'programmers:level2:programmers_17683'
 include 'programmers:level2:programmers_17684'
 include 'programmers:level2:programmers_17686'
+include 'programmers:level2:programmers_17687'
 include 'programmers:level2:programmers_42890'
 include 'programmers:level2:programmers_49993'
 include 'programmers:level2:programmers_49994'
