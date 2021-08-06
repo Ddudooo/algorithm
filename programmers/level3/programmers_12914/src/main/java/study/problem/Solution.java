@@ -2,22 +2,20 @@ package study.problem;
 
 public class Solution {
 
-	private long answer = 0;
-
 	public long solution(int n) {
-		dfs(0, n);
-		return answer;
+		return fibonacci(n);
 	}
 
-	private void dfs(int num, int target) {
-		if (num == target) {
-			answer++;
-			return;
+	private long fibonacci(int n) {
+		if (n <= 2) {
+			return n;
 		}
-		if (num > target) {
-			return;
+		long[] memorized = new long[n + 1];
+		memorized[1] = 1;
+		memorized[2] = 2;
+		for (int i = 3; i <= n; i++) {
+			memorized[i] = (memorized[i - 1] + memorized[i - 2]) % 1234567;
 		}
-		dfs(num + 1, target);
-		dfs(num + 2, target);
+		return memorized[n];
 	}
 }
