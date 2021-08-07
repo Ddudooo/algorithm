@@ -1,36 +1,23 @@
 package study.problem;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Solution {
 
 	public long solution(int n, int[] works) {
 		long answer = 0;
-		List<Integer> workList = new ArrayList<>();
-		for (int j : works) {
-			workList.add(j);
+		Queue<Integer> queue = new PriorityQueue<>((a, b) -> b - a);
+		for (int work : works) {
+			queue.add(work);
 		}
-		boolean flag = true;
-		while (flag) {
-			int max = 0;
-			int idx = 0;
-			for (int i = 0; i < workList.size(); i++) {
-				int work = workList.get(i);
-				max = Math.max(max, work);
-				if (max == work) {
-					idx = i;
-				}
-			}
-			if (max != 0) {
-				workList.set(idx, max - 1);
-				n--;
-			}
-			if (max == 0 || n == 0) {
-				flag = false;
-			}
+		for (int i = 0; i < n; i++) {
+			int poll = queue.poll();
+			queue.add(Math.max(poll - 1, 0));
 		}
-		for (int work : workList) {
+
+		while (!queue.isEmpty()) {
+			int work = queue.poll();
 			answer += Math.pow(work, 2);
 		}
 		return answer;
