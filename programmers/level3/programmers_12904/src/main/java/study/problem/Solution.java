@@ -3,11 +3,24 @@ package study.problem;
 public class Solution {
 
 	public int solution(String s) {
-		int answer = 0;
+		int length = s.length();
+		char[] chars = s.toCharArray();
+		for (int l = length; l > 1; l--) {
 
-		// [실행] 버튼을 누르면 출력 값을 볼 수 있습니다.
-		System.out.println("Hello Java");
+			for (int start = 0; start + l <= length; start++) {
+				boolean isPanlindrome = true;
+				for (int i = 0; i < l / 2; i++) {
+					if (chars[start + i] != chars[start + l - i - 1]) {
+						isPanlindrome = false;
+						break;
+					}
+				}
+				if (isPanlindrome) {
+					return l;
+				}
+			}
 
-		return answer;
+		}
+		return 1;
 	}
 }

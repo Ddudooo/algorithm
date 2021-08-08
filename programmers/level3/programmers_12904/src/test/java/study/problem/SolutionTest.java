@@ -18,7 +18,15 @@ class SolutionTest {
 	@ParameterizedTest
 	@CsvSource(value = {
 		"\"abcdcba\"\t7",
-		"\"abacde\"\t3"
+		"\"abacde\"\t3",
+		"\"abcabcdcbae\"\t7",
+		"\"aaaa\"\t4",
+		"\"abcde\"\t1",
+		"\"a\"\t1",
+		"\"abcbaqwertrewqq\"\t9",
+		"\"abcbaqwqabcba\"\t13",
+		"\"abba\"\t4",
+		"\"abaabaaaaaaa\"\t7"
 	}, delimiter = '\t')
 	void testCase(String s, int result) {
 		s = s.replaceAll("\"", "");
