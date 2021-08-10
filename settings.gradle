@@ -84,6 +84,7 @@ include 'programmers'
 
 include 'programmers:weekly'
 include 'programmers:weekly:programmers_82612'
+include 'programmers:weekly:programmers_83201'
 
 include 'programmers:level2'
 include 'programmers:level2:programmers_1829'
