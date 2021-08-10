@@ -17,9 +17,14 @@ class SolutionTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {}, delimiter = '\t')
+	@CsvSource(value = {
+		"[[100,90,98,88,65],[50,45,99,85,77],[47,88,95,80,67],[61,57,100,80,65],[24,90,94,75,65]]\t\"FBABD\"",
+		"[[50,90],[50,87]]\t\"DA\"",
+		"[[70,49,90],[68,50,38],[73,31,100]]\t\"CFD\""
+	}, delimiter = '\t')
 	void testCase(String scoreStr, String result) {
 		int[][] score = strToIntDoubleAry(scoreStr);
+		result = result.replaceAll("\"", "");
 		String answer = this.solution.solution(score);
 
 		assertEquals(result, answer, "답이 같아야 한다.");
