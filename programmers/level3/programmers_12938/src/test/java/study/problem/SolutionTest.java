@@ -31,7 +31,7 @@ class SolutionTest {
 	private int[] strToIntAry(String str) {
 		String[] split = str.split(",");
 		return Arrays.stream(split)
-			.map(s -> s.replaceAll("\\D", ""))
+			.map(s -> s.replaceAll("[\\[\\]]", ""))
 			.map(String::trim)
 			.mapToInt(Integer::valueOf)
 			.toArray();
