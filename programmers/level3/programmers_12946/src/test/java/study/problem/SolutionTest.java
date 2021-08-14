@@ -18,24 +18,26 @@ class SolutionTest {
 
 	@ParameterizedTest
 	@CsvSource(value = {
-		"2\t[ [1,2], [1,3], [2,3] ]"
+		"2\t[ [1,2], [1,3], [2,3] ]",
+		"3\t[[1, 3], [1, 2], [3, 2], [1, 3], [2, 1], [2, 3], [1, 3]]"
 	}, delimiter = '\t')
 	void testCase(int n, String resultStr) {
 		int[][] answer = this.solution.solution(n);
 
-		assertArrayEquals(strToDoubleStrAry(resultStr), answer, "답이 같아야 한다.");
+		int[][] expected = strToIntDoubleAry(resultStr);
+		assertArrayEquals(expected, answer, "답이 같아야 한다.");
 	}
 
-	private String[][] strToDoubleStrAry(String str) {
+	private int[][] strToIntDoubleAry(String str) {
 		String[] split = str.split("],.?\\[");
 		return Arrays.stream(split)
-			.map(row -> {
-				String[] ele = row.split(",");
-				return Arrays.stream(ele)
-					.map(s -> s.replaceAll("\\W", ""))
+			.map(s -> s.split(","))
+			.map(strs ->
+				Arrays.stream(strs)
+					.map(s -> s.replaceAll("\\D", ""))
 					.map(String::trim)
-					.toArray(String[]::new);
-			})
-			.toArray(String[][]::new);
+					.mapToInt(Integer::valueOf)
+					.toArray())
+			.toArray(int[][]::new);
 	}
 }
