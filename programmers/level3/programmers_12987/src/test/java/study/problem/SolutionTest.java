@@ -17,7 +17,10 @@ class SolutionTest {
 	}
 
 	@ParameterizedTest
-	@CsvSource(value = {}, delimiter = '\t')
+	@CsvSource(value = {
+		"[5,1,3,7]\t[2,2,6,8]\t3",
+		"[2,2,2,2]\t[1,1,1,1]\t0"
+	}, delimiter = '\t')
 	void testCase(String aStr, String bStr, int result) {
 		int answer = this.solution.solution(strToIntAry(aStr), strToIntAry(bStr));
 
