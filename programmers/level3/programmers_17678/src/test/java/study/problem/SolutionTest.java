@@ -28,7 +28,8 @@ class SolutionTest {
 	void testCase(int n, int t, int m, String timetableStr, String result) {
 		String answer = this.solution.solution(n, t, m, strToStrAry(timetableStr));
 
-		assertEquals(result, answer, "답이 같아야 한다.");
+		String expected = result.replaceAll("\"", "");
+		assertEquals(expected, answer, "답이 같아야 한다.");
 	}
 
 	private String[] strToStrAry(String str) {
