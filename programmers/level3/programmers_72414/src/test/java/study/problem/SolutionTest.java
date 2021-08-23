@@ -23,6 +23,8 @@ class SolutionTest {
 		"\"50:00:00\"\t\"50:00:00\"\t[\"15:36:51-38:21:49\", \"10:14:18-15:36:51\", \"38:21:49-42:51:45\"]\t\"00:00:00\""
 	}, delimiter = '\t')
 	void testCase(String play_time, String adv_time, String logStr, String result) {
+		play_time = play_time.replaceAll("\"", "");
+		adv_time = adv_time.replaceAll("\"", "");
 		String answer = this.solution.solution(play_time, adv_time, strToStrAry(logStr));
 
 		String expect = result.replaceAll("\"", "");
