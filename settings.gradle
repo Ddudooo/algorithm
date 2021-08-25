@@ -108,6 +108,7 @@ include 'programmers:level2:programmers_72412'
 include 'programmers:level2:programmers_81302'
 
 include 'programmers:level3'
+include 'programmers:level3:programmers_1830'
 include 'programmers:level3:programmers_12900'
 include 'programmers:level3:programmers_12904'
 include 'programmers:level3:programmers_12907'
