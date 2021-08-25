@@ -19,7 +19,17 @@ class SolutionTest {
 	@CsvSource(value = {
 		"\"HaEaLaLaObWORLDb\"\t\"HELLO WORLD\"",
 		"\"SpIpGpOpNpGJqOqA\"\t\"SIGONG JOA\"",
-		"\"AxAxAxAoBoBoB\"\t\"invalid\""
+		"\"AxAxAxAoBoBoB\"\t\"invalid\"",
+		"aIaAM\tI AM",
+		"baHELLOabWORLD\tinvalid",
+		"aHbEbLbLbOacWdOdRdLdDc\tHELLO WORLD",
+		"bAaOb\tAO",
+		"\"TxTxTxbAb\"\t\"invalid\"",
+		"\"bTxTxTaTxTbkABaCDk\"\t\"invalid\"",
+		"aa\tinvalid",
+		"aaA\tinvalid",
+		"aGbWbFbDakGnWnLk\tGWFD GWL",
+		"aCaCa\tinvalid"
 	}, delimiter = '\t')
 	void testCase(String sentence, String result) {
 		sentence = sentence.replaceAll("\"", "");
