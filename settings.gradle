@@ -143,3 +143,7 @@ include 'programmers:level3:programmers_68646'
 include 'programmers:level3:programmers_72413'
 include 'programmers:level3:programmers_72414'
 include 'programmers:level3:programmers_77486'
+
+include 'leetcode'
+include 'leetcode:easy'
+include 'leetcode:easy:Two_Sum'
