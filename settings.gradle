@@ -149,5 +149,6 @@ include 'leetcode:easy'
 include 'leetcode:easy:Two_Sum'
 
 include 'leetcode:medium:Add_Two_Numbers'
+include 'leetcode:medium:Longest_Palindromic_Substring'
 
 include 'leetcode:hard:Median_of_Two_Sorted_Arrays'
