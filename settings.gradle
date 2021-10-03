@@ -151,5 +151,6 @@ include 'leetcode:easy:Reverse_Integer'
 
 include 'leetcode:medium:Add_Two_Numbers'
 include 'leetcode:medium:Longest_Palindromic_Substring'
+include 'leetcode:medium:ZigZag_Conversion'
 
 include 'leetcode:hard:Median_of_Two_Sorted_Arrays'
