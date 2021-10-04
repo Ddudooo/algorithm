@@ -3,6 +3,10 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.5.10'
 }
 
+ext {
+    KOTEST_VESRION = "5.0.0.M2"
+}
+
 group 'study'
 version '1.0-SNAPSHOT'
 sourceCompatibility = '11'
@@ -15,6 +19,12 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     testCompile("org.junit.jupiter:junit-jupiter-params:5.7.0")
+
+    // kotest
+    // @link(https://kotest.io/docs/quickstart)
+    testImplementation "io.kotest:kotest-runner-junit5:$KOTEST_VESRION"
+    testImplementation "io.kotest:kotest-assertions-core:$KOTEST_VESRION"
+    testImplementation "io.kotest:kotest-property:$KOTEST_VESRION"
 }
 
 test {
@@ -36,6 +46,10 @@ subprojects {
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
         testCompile("org.junit.jupiter:junit-jupiter-params:5.7.0")
+
+        testImplementation "io.kotest:kotest-runner-junit5:$KOTEST_VESRION"
+        testImplementation "io.kotest:kotest-assertions-core:$KOTEST_VESRION"
+        testImplementation "io.kotest:kotest-property:$KOTEST_VESRION"
     }
     test {
         useJUnitPlatform()
