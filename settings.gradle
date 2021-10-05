@@ -148,6 +148,7 @@ include 'leetcode'
 include 'leetcode:easy'
 include 'leetcode:easy:Two_Sum'
 include 'leetcode:easy:Reverse_Integer'
+include 'leetcode:easy:Palindrome_Number'
 
 include 'leetcode:medium:Add_Two_Numbers'
 include 'leetcode:medium:Longest_Palindromic_Substring'
