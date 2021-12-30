@@ -160,6 +160,7 @@ include 'leetcode:medium:String_to_Integer_(atoi)'
 include 'leetcode:medium:Container_With_Most_Water'
 include 'leetcode:medium:Integer_to_Roman'
 include 'leetcode:medium:Three_Sum'
+include 'leetcode:medium:Three_Sum_Closest'
 
 include 'leetcode:hard:Median_of_Two_Sorted_Arrays'
 include 'leetcode:hard:Regular_Expression_Matching'
